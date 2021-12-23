@@ -10,17 +10,138 @@ namespace Probleme_FP
     {
         static void Main(string[] args)
         {
-            //p1();
-            //p3();
-            //p14();
-            //p15();
-            //p19();
-            //p36();
-            //p24();
-            //p49();
-            //p50();
+            Console.WriteLine("PROBLEME FUNDAMENTELE PROGRAMARII ");
+            Console.WriteLine("LISTA PROBLEME:");
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("1.Sa se scrie un program care converteste temperatura din grade celsius in grade fahrenheit si invers utilizand instructiunea switch ");
+            Console.WriteLine("2.Fie i,j,k. Să se determine restul împărţirii numărului natural i^j la k. ");
+            Console.WriteLine("3.Scrieţi un program care să citească mai multe numere întregi, până la întâlnirea lui zero, şi si determine cel mai mic număr şi cel mai mare număr citit ");
+            Console.WriteLine("4.Scrieţi un program care să calculeze factorialul unui număr întreg n.");
+            Console.WriteLine("5.Să se scrie un program care să citească trei numere reale a, b şi c, apoi să pună o întrebare de genul: Ce doriţi să calculăm? Aria sau perimetrul?. Dacă se va răspunde prin ‘aria’ atunci se va calcula şi afişa aria, altfel perimetrul.");
+            Console.WriteLine("6.Scrie o metodă care primește ca parametru un număr natural x și apoi afișează: -cifrele numărului(în ordine inversă) -suma cifrelor -n == 21304 Cifrele numărului sunt: 4, 0, 3, 1, 2, Suma cifrelor este: 10");
+            Console.WriteLine("7.Se citeşte un număr natural. Câte cifre conţine ?");
+            Console.WriteLine("8.Sa se scrie o functie care calculeaza media aritmetica a elementelor pare dintr-un vector de numere intregi.");
+            Console.WriteLine("9.Functia care determina daca un vector dat e ordonat crescator.");
+            Console.WriteLine("  Functia care determina minimul unui vector dat.");
+            Console.WriteLine("  Functia care determina daca un vector dat are numai elem impare.");
+            Console.WriteLine("  Functia care determina daca un vector dat are numai elem pare.");
+            Console.WriteLine("  Functia care determina raportul dintre elem pare si elem impare dintr-un vector");
+            Console.WriteLine("10.Să se scrie un program care memorează 100 de numere aleatoare cuprinse între 0 și 99 întrun tablou și care afișează numerele care se repetă în tablou");
+            Console.WriteLine("11.Se citește un șir cu n numere naturale. Să se verifice dacă prin rearajarea elementelor șirului se poate obține un șir palindrom");
+            Console.WriteLine("---------------------------------------------");
+            Console.Write("ALEGETI PROBLEMA :");
 
+            int numar_problema = int.Parse(Console.ReadLine());
+            Console.WriteLine("---------------------------------------------");
+            switch (numar_problema)
+            {
+                case 1:                                                          
+                    p1();
+                    break;
+                case 2:
+                    p3();
+                    break;
+                case 3:
+                    p14();
+                    break;
+                case 4:
+                    p14();
+                    break;
+                case 5:
+                    p19();
+                    break;
+                case 6:
+                    p36();
+                    break;
+                case 7:
+                    p24();
+                    break;
+                case 8:
+                    p49();
+                    break;
+                case 9:
+                    p50();
+                    break;
+                case 10:
+                    p47();
+                    break;
+                case 11:
+                    pSortare4();
+                    break;
+            }
+            Console.WriteLine("---------------------------------------------");
         }
+
+        /// <summary>
+        ///  Se citește un șir cu n numere naturale. Să se verifice dacă prin rearajarea elementelor șirului se poate obține un șir palindrom
+        /// </summary>
+        private static void pSortare4()
+        {
+            Console.Write("n = ");
+            int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"v[{i}] = ");
+                v[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine();
+            int same = 0, count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                same = 1;
+                for (int j = i+1; j < n; j++)
+                {
+                    if (v[i] != -1)
+                    {
+                        if (v[i] == v[j])
+                        {
+                            same++;
+                            v[i] = -1;
+                        }
+                    }
+                }
+                if (same % 2 == 1)
+                    count++;
+            }
+            if (count == 1 && n % 2 == 1 || count == 0 && n % 2 == 0)
+            {
+                Console.WriteLine("elementele rearanjate pot forma un palindorm");
+            }
+            else
+                Console.WriteLine("elementele rearanjate nu pot forma un palindorm");
+            
+        }
+
+        /// <summary>
+        /// Să se scrie un program care memorează 100 de numere aleatoare cuprinse între 0 și 99 întrun tablou și care afișează numerele care se repetă în tablou
+        /// </summary>
+        private static void p47()
+        {
+            int[] v = new int[10];
+            Random rnd = new Random();
+            for (int i = 0; i < 101; i++)
+            {
+                v[i] = rnd.Next(100);
+                Console.WriteLine($"v[{i}] = {v[i]}");
+            }
+            Console.WriteLine(".........................................");
+            for (int i = 0; i < 101; i++)
+            {
+                for (int j = i+1; j < 101; j++)
+                {
+                    if(v[i]!= -1)
+                    {
+                        if (v[i] == v[j])
+                        {
+                            Console.WriteLine($"Elementul {v[i]} se repeta");
+                            v[i] = -1;
+                        }
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Problema 50 va cuprinde problemele 50-54!
         /*50. Functia care determina daca un vector dat e ordonat crescator.

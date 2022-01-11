@@ -28,6 +28,7 @@ namespace Probleme_FP
             Console.WriteLine("  Functia care determina raportul dintre elem pare si elem impare dintr-un vector");
             Console.WriteLine("10.Să se scrie un program care memorează 100 de numere aleatoare cuprinse între 0 și 99 întrun tablou și care afișează numerele care se repetă în tablou");
             Console.WriteLine("11.Se citește un șir cu n numere naturale. Să se verifice dacă prin rearajarea elementelor șirului se poate obține un șir palindrom");
+            Console.WriteLine("12.Să se extragă dintr-un vector elementele care au ultima cifră egală cu k şi să se formeze cu ele un alt vector.Să se afişeze cei doi vectori, unul sub altul.Exemplu: dacă se dau n = 3, k = 7, v[] ={ 17, 23, 47}, atunci vectorul u va fi { 17, 47}.");
             Console.WriteLine("---------------------------------------------");
             Console.Write("ALEGETI PROBLEMA :");
 
@@ -68,8 +69,55 @@ namespace Probleme_FP
                 case 11:
                     pSortare4();
                     break;
+                case 12:
+                    p63();
+                    break;
+                default:
+                    Console.WriteLine("ERROR");
+                    break;
             }
             Console.WriteLine("---------------------------------------------");
+        }
+
+        /// <summary>
+        /// Să se extragă dintr-un vector elementele care au ultima cifră egală cu k şi să se formeze cu ele un alt vector.
+        /// Să se afişeze cei doi vectori, unul sub altul.
+        /// Exemplu: dacă se dau n = 3, k= 7, v[]={ 17, 23, 47}, atunci vectorul u va fi {17, 47}.
+        /// </summary>
+        private static void p63()
+        {
+            Console.Write("n = ");
+            int n = int.Parse(Console.ReadLine());
+            Console.Write("k = ");
+            int k = int.Parse(Console.ReadLine());
+            int[] v = new int[n+1];
+            int[] u = new int[n];
+            int q = 0;
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"v[{i}] = ");
+                v[i] = int.Parse(Console.ReadLine());
+                if (v[i] % 10 == k)
+                {
+                    u[q] = v[i];
+                    q++;
+                }
+            }
+            Console.Write("v = ( ");
+            for (int i = 0; i < v.Length-1; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.Write(")");
+            Console.WriteLine();
+            Console.Write("u = ( ");
+            for (int j = 0; j < u.Length; j++)
+            {
+                if (k != 0 && u[j] != 0)
+                    Console.Write($"{u[j]} ");
+            }
+            Console.Write(")");
+            Console.WriteLine();
         }
 
         /// <summary>
